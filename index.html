@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLUB</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      text-align: center;
+      padding: 20px;
+      background-color: #000;
+      border: 1px solid #fff;
+      border-radius: 0px;
+      margin-top: 0px;
+    }
+    h1 {
+      color: #fff;
+      text-transform: uppercase;
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    input[type="text"] {
+      width: 80%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #fff;
+      border-radius: 0px;
+      background-color: transparent;
+      color: #fff;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #000;
+      color: #fff;
+      border: 1px solid #fff;
+      border-radius: 0px;
+      cursor: pointer;
+    }
+    #certificate {
+      margin-top: 40px;
+      border: 1px solid #fff;
+    }
+
+    #title {
+      margin-top: 0px;
+      border: 1px solid #fff;
+      padding: 10px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #name-text {
+      margin-top: 20px;
+    }
+
+    #aboutButtonContainer {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .infoButton {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #000000;
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+        margin: 0 10px;
+        border: 1px solid white;
+    }
+
+    #aboutOverlay {
+        color: white;
+        text-align: center;
+        align-items: center;
+    }
+
+    #artistOverlay {
+        color: white;
+        text-align: center;
+    }
+
+    .closeButton {
+        position:absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 9999; /* Ensure it's on top of other content */
+        cursor: pointer;
+        color: #ffffff;
+    }
+
+    #artistImage {
+        bottom: 0;
+        width: auto; /* Adjust width as needed */
+        height: 30vh;
+        background-image: url('https://ipfs.io/ipfs/QmT7ZYZrL62YFqExjqukrafvBRg686YCHZkEEnbdDduMzM'); /* Replace with the URL of the image */
+        background-repeat: repeat;
+        background-size: 15vh;
+        border: 1px solid white;
+        margin-bottom: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .overlayPopup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: black;
+      border: 1px solid white;
+      padding: 20px;
+      max-width: 300px;
+      min-width: 40%;
+      max-height: 50%;
+      text-align: center;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      overflow: auto; 
+      padding-bottom: 30px;
+      color: white;
+    }
+  </style>
+
+<link rel="icon" type="image/x-icon" href="https://ipfs.io/ipfs/QmT7ZYZrL62YFqExjqukrafvBRg686YCHZkEEnbdDduMzM">
+
+  <script type="text/javascript" src="./jspdf.umd.js"></script>
+  <script src="script.js"></script>
+  <script>
+    window.jsPDF = window.jspdf.jsPDF;
+  </script>
+</head>
+<body>
+  <div id="aboutButtonContainer">
+    <button class="infoButton" id="aboutButton">About</button>
+    <button class="infoButton" id="artistButton">Artist</button>
+  </div>
+
+  <!-- About Section -->
+  <div class="overlayPopup" id="aboutOverlay">
+    <div id="aboutContent">
+        <span class="closeButton" id="closeAbout">[ x ]</span>
+        <h2>About</h2>
+        <p>
+          CLUB is a social commentary. <br><br>
+      
+          It comments on the humanity of exclusivity and the Fear Of Missing Out (FOMO). <br><br>
+      
+          CLUB pushes the concept of undefined accomplishment to its limits. <br><br>
+      
+          Nothing here is protected by copyright. You are free to distribute and modify certificates in any way you please. <br><br>
+      
+          The images are stored on <a href="https://www.ipfs.io/" style="color: #ffffff;" target="_blank">IPFS</a>.
+      </p>
+    </div>
+</div>
+
+<!-- About the Artist Section -->
+<div class="overlayPopup" id="artistOverlay">
+    <div id="artistContent">
+        <span class="closeButton" id="closeArtist">[ x ]</span>
+        <h2>Artist</h2>
+        <p>The artist is Illya Markov, and this is a certified IllyaDrop.</p>
+    </div>
+    <div id="artistImage"></div>
+</div>
+
+  <div class="container">
+    <h1 id="title">CLUB</h1>
+
+    <p>Unbelievably, out of everyone in the world to visit the site, you are number:</p>
+
+    <h1 id="score">...</h1>
+
+    <p>Bask in that exclusivity for a moment. Feel the joy of being so special. Just think about it, you are in the top:</p>
+
+    <h1 id="percentile">...</h1>
+
+    <p>Nobody can take that away from you. You worked hard and earned it. You are so important, interesting, and completely deserving the membership to this exclusive club of people.</p>
+
+    <p>Once you have finished patting yourself on the back, you can generate a certificate to show off how special you are. Just enter your name down below and press the "Generate" button. Go on, you earned it.</p>
+
+    <div id="certificate">
+      <form id="certificateForm">
+        <label for="name" id="name-text">Recipient's Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+      </form>
+      <button onclick="demoTwoPageDocument()" class="button">Generate</button>
+      <h4>(this may take a few seconds)</h4>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
