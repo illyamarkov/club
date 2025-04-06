@@ -3,7 +3,7 @@ console.log("hello");
 var global_score = 0
 
 async function updateScore(){
-    var score = await fetch('https://corsproxy.io/?https://integer.api.horizonlabs.de/ea5daf0b115606d9b6f8d97fecf2124d27b3e86ef08e4023732a4a1a127e9ec8');
+    var score = await fetch('https://corsproxy.io/?url=https://integer.api.horizonlabs.de/ea5daf0b115606d9b6f8d97fecf2124d27b3e86ef08e4023732a4a1a127e9ec8');
     score = await score.json();
     score = score.value;
     global_score = score;
